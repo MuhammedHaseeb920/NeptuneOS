@@ -1,0 +1,220 @@
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #1a1d2e;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("neptune.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+#clock {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  text-align: right;
+}
+#time { font-size: 20px; font-weight: bold; }
+#date { font-size: 12px; opacity: 0.7; }
+
+#logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 300;
+  opacity: 0.8;
+  margin: 0;
+  pointer-events: none;
+}
+
+.window {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  width: 240px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: none;
+}
+
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: move;
+  user-select: none;
+}
+.close { cursor: pointer; }
+
+.content { padding: 12px; }
+
+.content button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+}
+.content button:hover { background: rgba(255, 255, 255, 0.35); }
+
+/* stopwatch */
+#sw-display {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+#sw-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* calculator */
+#calculator-window { left: 440px; top: 40px; width: 320px; }
+
+#calc-screen {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: right;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+#calc-expr {
+  font-size: 13px;
+  opacity: 0.6;
+  height: 18px;
+  white-space: nowrap;
+}
+#calc-display {
+  font-size: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+#calc-buttons button {
+  height: 46px;
+  font-size: 17px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.18);
+}
+#calc-buttons button:hover { background: rgba(255, 255, 255, 0.32); }
+#calc-buttons .fn { background: rgba(255, 255, 255, 0.28); }
+#calc-buttons .op { background: rgba(176, 130, 85, 0.9); }
+#calc-buttons .op:hover { background: rgba(200, 150, 100, 1); }
+#calc-buttons .zero { grid-column: span 2; }
+
+#history-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 14px 0 6px 0;
+}
+#history-clear { cursor: pointer; }
+#history-list {
+  max-height: 90px;
+  overflow-y: auto;
+  font-size: 13px;
+}
+.history-item {
+  padding: 5px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: right;
+}
+.history-item:hover { background: rgba(255, 255, 255, 0.12); }
+.history-item span { opacity: 0.6; }
+
+/* notepad */
+#notepad-window { left: 60px; top: 230px; width: 420px; }
+
+#notepad-body { display: flex; gap: 10px; }
+
+#note-side { width: 130px; }
+#new-note { width: 100%; margin-bottom: 8px; }
+#note-list {
+  height: 150px;
+  overflow-y: auto;
+}
+.note-item {
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+.note-item:hover { background: rgba(255, 255, 255, 0.1); }
+.note-item.active { background: rgba(255, 255, 255, 0.22); }
+.note-title {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-time { font-size: 10px; opacity: 0.6; }
+
+#note-main { flex: 1; }
+#note-text {
+  width: 100%;
+  height: 170px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  color: white;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+#note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 11px;
+}
+#note-status { opacity: 0.6; }
+
+/* dock */
+#dock {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dock-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.dock-icon:hover { filter: brightness(1.2); }
