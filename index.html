@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NeptuneOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <div id="clock">
+    <div id="time"></div>
+    <div id="date"></div>
+  </div>
+
+  <h1 id="logo">NeptuneOS</h1>
+
+  <div class="window" id="stopwatch-window">
+    <div class="titlebar">
+      <span>Stopwatch</span>
+      <span class="close" onclick="closeWindow('stopwatch-window')">x</span>
+    </div>
+    <div class="content">
+      <div id="sw-display">00:00.00</div>
+      <div id="sw-buttons">
+        <button id="sw-toggle" onclick="toggleStopwatch()">Start</button>
+        <button onclick="resetStopwatch()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window" id="calculator-window">
+    <div class="titlebar">
+      <span>Calculator</span>
+      <span class="close" onclick="closeWindow('calculator-window')">x</span>
+    </div>
+    <div class="content">
+      <div id="calc-screen">
+        <div id="calc-expr"></div>
+        <div id="calc-display">0</div>
+      </div>
+      <div id="calc-buttons">
+        <button class="fn" onclick="pressKey('C')">C</button>
+        <button class="fn" onclick="pressKey('±')">±</button>
+        <button class="fn" onclick="pressKey('%')">%</button>
+        <button class="op" onclick="pressKey('/')">÷</button>
+
+        <button onclick="pressKey('7')">7</button>
+        <button onclick="pressKey('8')">8</button>
+        <button onclick="pressKey('9')">9</button>
+        <button class="op" onclick="pressKey('*')">×</button>
+
+        <button onclick="pressKey('4')">4</button>
+        <button onclick="pressKey('5')">5</button>
+        <button onclick="pressKey('6')">6</button>
+        <button class="op" onclick="pressKey('-')">−</button>
+
+        <button onclick="pressKey('1')">1</button>
+        <button onclick="pressKey('2')">2</button>
+        <button onclick="pressKey('3')">3</button>
+        <button class="op" onclick="pressKey('+')">+</button>
+
+        <button class="zero" onclick="pressKey('0')">0</button>
+        <button onclick="pressKey('.')">.</button>
+        <button class="op" onclick="pressKey('=')">=</button>
+      </div>
+      <div id="history-header">
+        <span>History</span>
+        <span id="history-clear" onclick="clearHistory()">Clear</span>
+      </div>
+      <div id="history-list"></div>
+    </div>
+  </div>
+
+  <div class="window" id="notepad-window">
+    <div class="titlebar">
+      <span>Notepad</span>
+      <span class="close" onclick="closeWindow('notepad-window')">x</span>
+    </div>
+    <div class="content">
+      <div id="notepad-body">
+        <div id="note-side">
+          <button id="new-note" onclick="newNote()">+ New</button>
+          <div id="note-list"></div>
+        </div>
+        <div id="note-main">
+          <textarea id="note-text" placeholder="Type something..."></textarea>
+          <div id="note-footer">
+            <span id="note-status">Saved</span>
+            <button onclick="deleteNote()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dock">
+    <button class="dock-icon" id="open-stopwatch">⏱️</button>
+    <button class="dock-icon" id="open-calculator">🧮</button>
+    <button class="dock-icon" id="open-notepad">📝</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
